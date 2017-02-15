@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.spiriev.android.mobacounter.MainActivity">
+
+    <TextView
+        android:id="@+id/kill_counter_radiant_id"
+        style="@style/CounterStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/counter_string" />
+    <Button
+        android:id="@+id/plus_one_radiant_kill_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="increaseRadiantKillByOne"
+        android:text="@string/kill_button_one_text"/>
+    <Button
+        android:id="@+id/plus_three_radiant_kill_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/plus_one_radiant_kill_id"
+        android:onClick="increaseRadiantKillByThree"
+        android:text="@string/kill_button_three_text"/>
+    <Button
+        android:id="@+id/team_radiant_kill_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/plus_three_radiant_kill_id"
+        android:onClick="increaseRadiantKillByFive"
+        android:text="@string/kill_button_team_text"
+        android:textAllCaps="true"/>
+    <Button
+        android:id="@+id/reset_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/team_radiant_kill_id"
+        android:onClick="reset"
+        android:text="@string/reset_string"/>
+
+</RelativeLayout>

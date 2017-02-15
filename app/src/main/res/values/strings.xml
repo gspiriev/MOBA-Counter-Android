@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MOBA Counter</string>
+    <string name="kill_button_one_text">+1 K</string>
+    <string name="kill_button_three_text">+3 K</string>
+    <string name="kill_button_team_text">Team Kill</string>
+    <string name="counter_string">0</string>
+    <string name="reset_string">Reset</string>
+</resources>
