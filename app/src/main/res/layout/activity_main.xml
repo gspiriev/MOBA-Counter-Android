@@ -1,47 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.spiriev.android.mobacounter.MainActivity">
 
-    <TextView
-        android:id="@+id/kill_counter_radiant_id"
-        style="@style/CounterStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/counter_string" />
-    <Button
-        android:id="@+id/plus_one_radiant_kill_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:onClick="increaseRadiantKillByOne"
-        android:text="@string/kill_button_one_text"/>
-    <Button
-        android:id="@+id/plus_three_radiant_kill_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/plus_one_radiant_kill_id"
-        android:onClick="increaseRadiantKillByThree"
-        android:text="@string/kill_button_three_text"/>
-    <Button
-        android:id="@+id/team_radiant_kill_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/plus_three_radiant_kill_id"
-        android:onClick="increaseRadiantKillByFive"
-        android:text="@string/kill_button_team_text"
-        android:textAllCaps="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/weight_usage_case"
+        android:layout_weight="4">
+        <Button
+            android:id="@+id/plus_three_radiant_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            style="@style/ButtonRadiantStyle"
+            android:text="@string/kill_button_three_text" />
+        <Button
+            android:id="@+id/plus_one_radiant_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonRadiantStyle"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/plus_three_radiant_kill_id"
+            android:text="@string/kill_button_one_text" />
+        <Button
+            android:id="@+id/team_radiant_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonRadiantStyle"
+            android:layout_below="@id/plus_three_radiant_kill_id"
+            android:layout_alignParentRight="true"
+            android:text="@string/kill_button_team_text"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/kill_counter_radiant_id"
+            style="@style/CounterRadiantStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/counter_string" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/weight_usage_case"
+        android:layout_weight="4">
+        <Button
+            android:id="@+id/plus_three_dire_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/ButtonDireStyle"
+            android:text="@string/kill_button_three_text" />
+        <Button
+            android:id="@+id/plus_one_dire_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonDireStyle"
+            android:layout_above="@id/plus_three_dire_kill_id"
+            android:text="@string/kill_button_one_text" />
+
+        <Button
+            android:id="@+id/team_dire_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plus_three_dire_kill_id"
+            style="@style/ButtonDireStyle"
+            android:text="@string/kill_button_team_text"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/kill_counter_dire_id"
+            style="@style/CounterDireStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/counter_string" />
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/reset_id"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/team_radiant_kill_id"
-        android:onClick="reset"
-        android:text="@string/reset_string"/>
-
-</RelativeLayout>
+        android:layout_height="@dimen/weight_usage_case"
+        android:layout_gravity="right"
+        android:layout_weight="1"
+        android:text="@string/reset_string" />
+</LinearLayout>

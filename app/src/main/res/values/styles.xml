@@ -7,14 +7,32 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="CounterStyle">
+    <style name="CounterRadiantStyle">
+        <item name="android:layout_marginLeft">64dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:layout_margin">32dp</item>
-        <item name="android:textSize">55dp</item>
+        <item name="android:textSize">@dimen/counter_default_text_size</item>
         <item name="android:shadowRadius">20</item>
         <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
     </style>
-
+    <style name="CounterDireStyle">
+        <item name="android:layout_marginRight">64dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/counter_default_text_size</item>
+        <item name="android:shadowRadius">20</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+    </style>
+    <style name="ButtonRadiantStyle">
+        <item name="android:layout_marginRight">32dp</item>
+    </style>
+    <style name="ButtonDireStyle">
+        <item name="android:layout_marginLeft">32dp</item>
+    </style>
 </resources>

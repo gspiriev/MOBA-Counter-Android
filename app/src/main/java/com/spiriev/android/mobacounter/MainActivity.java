@@ -16,48 +16,94 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int kills = 0;
-    private Button[] buttons;
-    private final float DEFAULT_NUMBER_SIZE = 55.0f;
+    private int killsRadiant = 0;
+    private int killsDire = 0;
+    private Button[] buttonsRadiant;
+    private Button[] buttonsDire;
+    private final float DEFAULT_NUMBER_SIZE = 62.0f;
+    private TextView killCounterViewRadiant;
+    private TextView killCounterViewDire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Typeface carribean = Typeface.createFromAsset(getAssets(), "Edisson.ttf");
-        TextView killCounterViewRadiant = (TextView) findViewById(R.id.kill_counter_radiant_id);
-        killCounterViewRadiant.setTypeface(carribean);
+        Typeface edisson = Typeface.createFromAsset(getAssets(), "Edisson.ttf");
+        killCounterViewRadiant = (TextView) findViewById(R.id.kill_counter_radiant_id);
+        killCounterViewDire = (TextView) findViewById(R.id.kill_counter_dire_id);
 
-        buttons = new Button[]{(Button) findViewById(R.id.plus_one_radiant_kill_id),
+        killCounterViewRadiant.setTypeface(edisson);
+        killCounterViewDire.setTypeface(edisson);
+
+        buttonsRadiant = new Button[]{(Button) findViewById(R.id.plus_one_radiant_kill_id),
                 (Button) findViewById(R.id.plus_three_radiant_kill_id),
-                (Button) findViewById(R.id.team_radiant_kill_id)};
+                (Button) findViewById(R.id.team_radiant_kill_id),
+                (Button) findViewById(R.id.reset_id)};
+
+        buttonsDire = new Button[]{(Button) findViewById(R.id.plus_one_dire_kill_id),
+                (Button) findViewById(R.id.plus_three_dire_kill_id),
+                (Button) findViewById(R.id.team_dire_kill_id)};
+
+        for (Button button : buttonsRadiant) {
+            button.setOnClickListener(this);
+        }
+        for (Button button : buttonsDire) {
+            button.setOnClickListener(this);
+        }
     }
 
-    public void increaseRadiantKillByOne(View view) {
-        TextView killCounterView = (TextView) findViewById(R.id.kill_counter_radiant_id);
-        killCounterView.setText("" + (++kills));
-        ObjectAnimator colorAnimator = createColorAnimator(Color.RED, killCounterView, 400L);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.plus_one_radiant_kill_id:
+                increaseKillByOne(Color.BLUE, killCounterViewRadiant, buttonsRadiant, ++killsRadiant);
+                break;
+            case R.id.plus_three_radiant_kill_id:
+                increaseKillByThree(Color.BLUE, killCounterViewRadiant, buttonsRadiant, killsRadiant += 3);
+                break;
+            case R.id.team_radiant_kill_id:
+                increaseKillByFive(Color.BLUE, killCounterViewRadiant, buttonsRadiant, killsRadiant += 5);
+                break;
+            case R.id.reset_id:
+                reset(killsRadiant = 0, killsDire = 0);
+                break;
+            case R.id.plus_one_dire_kill_id:
+                increaseKillByOne(Color.RED, killCounterViewDire, buttonsDire, ++killsDire);
+                break;
+            case R.id.plus_three_dire_kill_id:
+                increaseKillByThree(Color.RED, killCounterViewDire, buttonsDire, killsDire += 3);
+                break;
+            case R.id.team_dire_kill_id:
+                increaseKillByFive(Color.RED, killCounterViewDire, buttonsDire, killsDire += 5);
+                break;
+        }
+    }
+
+    public void increaseKillByOne(int color, TextView view, Button[] buttons, int kills) {
+        String killsString = "" + kills;
+        view.setText(killsString);
+        ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
         AnimateCounter.animateCounter(buttons, colorAnimator);
     }
 
-    public void increaseRadiantKillByThree(View view) {
-        TextView killCounterView = (TextView) findViewById(R.id.kill_counter_radiant_id);
-        killCounterView.setText("" + (kills += 3));
-        ObjectAnimator colorAnimator = createColorAnimator(Color.RED, killCounterView, 400L);
-        ObjectAnimator textSizeAnimator = createTextSizeAnimator(killCounterView, DEFAULT_NUMBER_SIZE, 400L,
+    public void increaseKillByThree(int color, TextView view, Button[] buttons, int kills) {
+        String killsString = "" + kills;
+        view.setText(killsString);
+        ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
+        ObjectAnimator textSizeAnimator = createTextSizeAnimator(view, DEFAULT_NUMBER_SIZE, 400L,
                 new FastOutSlowInInterpolator());
         AnimateCounter.animateCounter(buttons, colorAnimator, textSizeAnimator);
     }
 
-    public void increaseRadiantKillByFive(View view) {
-        TextView killCounterView = (TextView) findViewById(R.id.kill_counter_radiant_id);
-        killCounterView.setText("" + (kills += 5));
-        ObjectAnimator colorAnimator = createColorAnimator(Color.RED, killCounterView, 400L);
-        ObjectAnimator textSizeAnimatorIn = createTextSizeAnimator(killCounterView, 70.0f, 300L,
+    public void increaseKillByFive(int color, TextView view, Button[] buttons, int kills) {
+        String killsString = "" + kills;
+        view.setText(killsString);
+        ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
+        ObjectAnimator textSizeAnimatorIn = createTextSizeAnimator(view, 82.0f, 300L,
                 new LinearInterpolator());
-        ObjectAnimator textSizeAnimatorOut = createTextSizeAnimator(killCounterView, DEFAULT_NUMBER_SIZE, 100L,
+        ObjectAnimator textSizeAnimatorOut = createTextSizeAnimator(view, DEFAULT_NUMBER_SIZE, 100L,
                 new LinearInterpolator());
         AnimateCounter.animateCounter(buttons, colorAnimator, textSizeAnimatorIn, textSizeAnimatorOut);
     }
@@ -97,8 +143,10 @@ public class MainActivity extends AppCompatActivity {
         return textSizeAnimator;
     }
 
-    public void reset(View view) {
-        TextView killCounterView = (TextView) findViewById(R.id.kill_counter_radiant_id);
-        killCounterView.setText("" + (kills = 0));
+    public void reset(int killsRadiant, int killsDire) {
+        String killsDireString = "" + killsDire;
+        String killsRadiantString = "" + killsRadiant;
+        killCounterViewRadiant.setText(killsRadiantString);
+        killCounterViewDire.setText(killsDireString);
     }
 }

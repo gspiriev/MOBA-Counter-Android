@@ -78,7 +78,6 @@ public class AnimateCounter {
     public static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator,
                                       ObjectAnimator textSizeAnimator) {
         AnimatorSet counterViewSet = new AnimatorSet();
-        //counterViewSet.play(colorAnimator).after(textSizeAnimator);
         counterViewSet.playTogether(textSizeAnimator, colorAnimator);
         colorAnimator.setStartDelay(230L);
         counterViewSet.addListener(new Animator.AnimatorListener() {
