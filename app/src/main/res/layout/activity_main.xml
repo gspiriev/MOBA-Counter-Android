@@ -4,35 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.spiriev.android.mobacounter.MainActivity">
+    tools:context="com.spiriev.android.mobacounter.MainActivity"
+    android:background="@drawable/dota_2_art_background_clean">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/weight_usage_case"
-        android:layout_weight="4">
+        android:layout_weight="3">
+
         <Button
             android:id="@+id/plus_three_radiant_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             style="@style/ButtonRadiantStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="@string/kill_button_three_text" />
+
         <Button
             android:id="@+id/plus_one_radiant_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             style="@style/ButtonRadiantStyle"
-            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
             android:layout_above="@id/plus_three_radiant_kill_id"
+            android:layout_alignParentRight="true"
             android:text="@string/kill_button_one_text" />
+
         <Button
             android:id="@+id/team_radiant_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             style="@style/ButtonRadiantStyle"
-            android:layout_below="@id/plus_three_radiant_kill_id"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
             android:layout_alignParentRight="true"
+            android:layout_below="@id/plus_three_radiant_kill_id"
             android:text="@string/kill_button_team_text"
             android:textAllCaps="true" />
 
@@ -48,28 +52,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/weight_usage_case"
-        android:layout_weight="4">
+        android:layout_weight="3">
+
         <Button
             android:id="@+id/plus_three_dire_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             style="@style/ButtonDireStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_centerVertical="true"
             android:text="@string/kill_button_three_text" />
+
         <Button
             android:id="@+id/plus_one_dire_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             style="@style/ButtonDireStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
             android:layout_above="@id/plus_three_dire_kill_id"
             android:text="@string/kill_button_one_text" />
 
         <Button
             android:id="@+id/team_dire_kill_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/plus_three_dire_kill_id"
             style="@style/ButtonDireStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@id/plus_three_dire_kill_id"
             android:text="@string/kill_button_team_text"
             android:textAllCaps="true" />
 
@@ -88,5 +94,8 @@
         android:layout_height="@dimen/weight_usage_case"
         android:layout_gravity="right"
         android:layout_weight="1"
-        android:text="@string/reset_string" />
+        android:text="@string/reset_string"
+        android:textSize="@dimen/reset_button_text_size"
+        android:layout_margin="@dimen/reset_button_margin"
+        android:background="@drawable/button_style_moba"/>
 </LinearLayout>

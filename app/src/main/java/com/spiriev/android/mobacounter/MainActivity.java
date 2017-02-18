@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Typeface edisson = Typeface.createFromAsset(getAssets(), "Edisson.ttf");
+        Typeface bremen = Typeface.createFromAsset(getAssets(), "BREMEN_3.TTF");
         killCounterViewRadiant = (TextView) findViewById(R.id.kill_counter_radiant_id);
         killCounterViewDire = (TextView) findViewById(R.id.kill_counter_dire_id);
 
@@ -47,9 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 (Button) findViewById(R.id.team_dire_kill_id)};
 
         for (Button button : buttonsRadiant) {
+            button.setTypeface(edisson);
             button.setOnClickListener(this);
         }
         for (Button button : buttonsDire) {
+            button.setTypeface(edisson);
             button.setOnClickListener(this);
         }
     }
@@ -118,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void set(TextView object, Integer value) {
-                object.setShadowLayer(20.0f, 0.0f, 0.0f, value);
+                object.setShadowLayer(30.0f, 0.0f, 0.0f, value);
             }
         };
 

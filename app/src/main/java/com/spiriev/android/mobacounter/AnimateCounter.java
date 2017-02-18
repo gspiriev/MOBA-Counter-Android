@@ -21,14 +21,14 @@ public class AnimateCounter {
         counterViewSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(false);
                 }
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(true);
                 }
             }
@@ -50,14 +50,14 @@ public class AnimateCounter {
         colorAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(false);
                 }
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(true);
                 }
             }
@@ -83,14 +83,14 @@ public class AnimateCounter {
         counterViewSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(false);
                 }
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                for (Button killButton: killButtons) {
+                for (Button killButton : killButtons) {
                     killButton.setEnabled(true);
                 }
             }
