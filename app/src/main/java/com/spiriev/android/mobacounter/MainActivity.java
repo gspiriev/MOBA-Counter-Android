@@ -66,6 +66,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putStringArray("killCounters", new String[] {killCounterViewRadiant.getText().toString(),
+                                                              killCounterViewDire.getText().toString()});
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String[] killValues = savedInstanceState.getStringArray("killCounters");
+        killCounterViewRadiant.setText(killValues[0]);
+        killCounterViewDire.setText(killValues[1]);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.plus_one_radiant_kill_id:
