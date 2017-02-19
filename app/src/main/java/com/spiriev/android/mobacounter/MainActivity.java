@@ -5,11 +5,13 @@ import android.animation.FloatEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Property;
+import android.view.Display;
 import android.view.View;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final float DEFAULT_NUMBER_SIZE = 62.0f;
     private TextView killCounterViewRadiant;
     private TextView killCounterViewDire;
+    private TextView radiantName;
+    private TextView direName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface bremen = Typeface.createFromAsset(getAssets(), "BREMEN_3.TTF");
         killCounterViewRadiant = (TextView) findViewById(R.id.kill_counter_radiant_id);
         killCounterViewDire = (TextView) findViewById(R.id.kill_counter_dire_id);
+        radiantName = (TextView) findViewById(R.id.nature_text_id);
+        direName = (TextView) findViewById(R.id.monsters_text_id);
 
         killCounterViewRadiant.setTypeface(edisson);
         killCounterViewDire.setTypeface(edisson);
+        radiantName.setTypeface(bremen);
+        direName.setTypeface(bremen);
 
         buttonsRadiant = new Button[]{(Button) findViewById(R.id.plus_one_radiant_kill_id),
                 (Button) findViewById(R.id.plus_three_radiant_kill_id),
@@ -121,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void set(TextView object, Integer value) {
-                object.setShadowLayer(30.0f, 0.0f, 0.0f, value);
+                object.setShadowLayer(24.0f, 0.0f, 0.0f, value);
             }
         };
 
@@ -152,4 +160,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         killCounterViewRadiant.setText(killsRadiantString);
         killCounterViewDire.setText(killsDireString);
     }
+    /*
+    private void centerTeamTextProper(TextView tv) {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        tv.setPadding((width / 8), 0, 0, 0);
+
+    }
+    */
 }
