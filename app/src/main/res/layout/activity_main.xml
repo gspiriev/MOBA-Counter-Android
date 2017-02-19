@@ -26,7 +26,6 @@
         <Button
             android:id="@+id/plus_three_radiant_kill_id"
             style="@style/ButtonRadiantStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -35,7 +34,6 @@
         <Button
             android:id="@+id/plus_one_radiant_kill_id"
             style="@style/ButtonRadiantStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_above="@id/plus_three_radiant_kill_id"
             android:layout_alignParentRight="true"
@@ -44,7 +42,6 @@
         <Button
             android:id="@+id/team_radiant_kill_id"
             style="@style/ButtonRadiantStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_alignParentRight="true"
             android:layout_below="@id/plus_three_radiant_kill_id"
@@ -79,7 +76,6 @@
         <Button
             android:id="@+id/plus_three_dire_kill_id"
             style="@style/ButtonDireStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_centerVertical="true"
             android:text="@string/kill_button_three_text" />
@@ -87,7 +83,6 @@
         <Button
             android:id="@+id/plus_one_dire_kill_id"
             style="@style/ButtonDireStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_above="@id/plus_three_dire_kill_id"
             android:text="@string/kill_button_one_text" />
@@ -95,7 +90,6 @@
         <Button
             android:id="@+id/team_dire_kill_id"
             style="@style/ButtonDireStyle"
-            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
             android:layout_below="@id/plus_three_dire_kill_id"
             android:text="@string/kill_button_team_text"
@@ -112,12 +106,13 @@
 
     <Button
         android:id="@+id/reset_id"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/reset_button_width"
         android:layout_height="@dimen/weight_usage_case"
         android:layout_gravity="right"
         android:layout_margin="@dimen/reset_button_margin"
         android:layout_weight="1"
         android:background="@drawable/button_style_moba"
         android:text="@string/reset_string"
+        android:textColor ="@android:color/white"
         android:textSize="@dimen/reset_button_text_size" />
 </LinearLayout>

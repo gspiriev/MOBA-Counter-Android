@@ -4,21 +4,19 @@ import android.animation.ArgbEvaluator;
 import android.animation.FloatEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
+import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Property;
-import android.view.Display;
 import android.view.View;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private int killsRadiant = 0;
     private int killsDire = 0;
@@ -27,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final float DEFAULT_NUMBER_SIZE = 62.0f;
     private TextView killCounterViewRadiant;
     private TextView killCounterViewDire;
-    private TextView radiantName;
-    private TextView direName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface bremen = Typeface.createFromAsset(getAssets(), "BREMEN_3.TTF");
         killCounterViewRadiant = (TextView) findViewById(R.id.kill_counter_radiant_id);
         killCounterViewDire = (TextView) findViewById(R.id.kill_counter_dire_id);
-        radiantName = (TextView) findViewById(R.id.nature_text_id);
-        direName = (TextView) findViewById(R.id.monsters_text_id);
+        TextView radiantName = (TextView) findViewById(R.id.nature_text_id);
+        TextView direName = (TextView) findViewById(R.id.monsters_text_id);
 
         killCounterViewRadiant.setTypeface(edisson);
         killCounterViewDire.setTypeface(edisson);
@@ -67,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putStringArray("killCounters", new String[] {killCounterViewRadiant.getText().toString(),
-                                                              killCounterViewDire.getText().toString()});
+        outState.putStringArray("killCounters", new String[]{killCounterViewRadiant.getText().toString(),
+                killCounterViewDire.getText().toString()});
         super.onSaveInstanceState(outState);
     }
 
@@ -107,14 +103,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void increaseKillByOne(int color, TextView view, Button[] buttons, int kills) {
+    private void increaseKillByOne(int color, TextView view, Button[] buttons, int kills) {
         String killsString = "" + kills;
         view.setText(killsString);
         ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
         AnimateCounter.animateCounter(buttons, colorAnimator);
     }
 
-    public void increaseKillByThree(int color, TextView view, Button[] buttons, int kills) {
+    private void increaseKillByThree(int color, TextView view, Button[] buttons, int kills) {
         String killsString = "" + kills;
         view.setText(killsString);
         ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AnimateCounter.animateCounter(buttons, colorAnimator, textSizeAnimator);
     }
 
-    public void increaseKillByFive(int color, TextView view, Button[] buttons, int kills) {
+    private void increaseKillByFive(int color, TextView view, Button[] buttons, int kills) {
         String killsString = "" + kills;
         view.setText(killsString);
         ObjectAnimator colorAnimator = createColorAnimator(color, view, 400L);
@@ -169,20 +165,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return textSizeAnimator;
     }
 
-    public void reset(int killsRadiant, int killsDire) {
+    private void reset(int killsRadiant, int killsDire) {
         String killsDireString = "" + killsDire;
         String killsRadiantString = "" + killsRadiant;
         killCounterViewRadiant.setText(killsRadiantString);
         killCounterViewDire.setText(killsDireString);
     }
-    /*
-    private void centerTeamTextProper(TextView tv) {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        tv.setPadding((width / 8), 0, 0, 0);
-
-    }
-    */
 }

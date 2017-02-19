@@ -9,10 +9,10 @@ import android.widget.Button;
  * Created by h3moglob1n on 2/14/17.
  */
 
-public class AnimateCounter {
+class AnimateCounter {
 
 
-    public static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator,
+    static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator,
                                       ObjectAnimator testSizeAnimatorIn,
                                       ObjectAnimator textSizeAnimatorOut) {
         AnimatorSet counterViewSet = new AnimatorSet();
@@ -46,7 +46,7 @@ public class AnimateCounter {
         counterViewSet.start();
     }
 
-    public static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator) {
+    static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator) {
         colorAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -75,7 +75,7 @@ public class AnimateCounter {
         colorAnimator.start();
     }
 
-    public static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator,
+    static void animateCounter(final Button[] killButtons, ObjectAnimator colorAnimator,
                                       ObjectAnimator textSizeAnimator) {
         AnimatorSet counterViewSet = new AnimatorSet();
         counterViewSet.playTogether(textSizeAnimator, colorAnimator);
